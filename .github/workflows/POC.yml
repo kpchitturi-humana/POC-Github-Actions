@@ -20,7 +20,7 @@ jobs:
     name: Start a load test
     steps:
     - name: Execute LoadRunner Enterprise test
-        uses: Micro-Focus.PCIntegration.build-task-pc-test-execution.PerformanceCenterTesting@1
+        uses: http://louappwqs4503/loadtest
         id: lre_run_test
         with:
           lre_server: ${{ github.event.inputs.lre_server }}
