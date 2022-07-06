@@ -23,13 +23,14 @@ jobs:
         uses: http://louappwqs4503/loadtest
         id: lre_run_test
         with:
-          lre_server: ${{ github.event.inputs.lre_server }}
-          lre_user: ${{ github.event.inputs.lre_user }}
-          lre_pass: ${{ github.event.inputs.lre_pass }}
-          lre_test_id: '16467'
+          lre_server: 'http://louappwqs4503/loadtest'
+          lre_user: 'KIC6746'
+          lre_pass: 'jay#1985'
+          lre_domain: 'AEP'
+          lre_project: 'Pipelines_AEP'
+          lre_test_id: '176'
           lre_auto_test_instance: 'false'
-          lre_test_inst_id:4614
-          lre_time_lot_duration:60
+          
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
