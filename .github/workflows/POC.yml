@@ -20,7 +20,7 @@ jobs:
     name: Start a load test
     steps:
     - name: Execute LoadRunner Enterprise test
-        uses: http://louappwqs4503/loadtest
+        uses: devops-actions/load-runner-info@main
         id: lre_run_test
         with:
           lre_server: 'http://louappwqs4503/loadtest'
