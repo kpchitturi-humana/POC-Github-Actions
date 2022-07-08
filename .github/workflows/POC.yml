@@ -22,7 +22,7 @@ jobs:
     steps:
     - name: Execute LoadRunner Enterprise test
       id: lre_run_test
-    - uses: actions/Micro-Focus.PCIntegration.build-task-pc-test-execution.PerformanceCenterTesting@main
+    - uses: Micro-Focus.PCIntegration.build-task-pc-test-execution.PerformanceCenterTesting@main
     - with:
           lre_server: 'http://louappwqs4503/loadtest'
           lre_user: 'KIC6746'
