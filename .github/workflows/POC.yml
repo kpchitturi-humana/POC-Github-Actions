@@ -30,4 +30,4 @@ jobs:
           lre_project: 'Pipelines_AEP'
           lre_test_id: '176'
           lre_auto_test_instance: 'false'
-          run: echo Hello
+         
