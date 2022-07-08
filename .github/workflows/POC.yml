@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "POC" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "POC" ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,7 +21,8 @@ jobs:
     steps:
     - name: Execute LoadRunner Enterprise test
       id: lre_run_test
-        with:
+    - uses: actions/checkout@v2
+    - with:
           lre_server: 'http://louappwqs4503/loadtest'
           lre_user: 'KIC6746'
           lre_pass: 'jay#1985'
@@ -29,23 +30,4 @@ jobs:
           lre_project: 'Pipelines_AEP'
           lre_test_id: '176'
           lre_auto_test_instance: 'false'
-          
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          run: echo Hello
