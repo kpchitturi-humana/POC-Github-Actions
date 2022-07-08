@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
  load_test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     name: Start a load test
     steps:
     - name: Execute LoadRunner Enterprise test
