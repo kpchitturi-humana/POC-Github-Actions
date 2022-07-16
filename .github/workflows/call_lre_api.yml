@@ -1,0 +1,57 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Currently we do not quite care about build only to run load test
+      #- uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Start
+      
+      # Authenticate and Get Cookie
+      - name: LRE Authenticate
+        id: query
+        uses: CamiloGarciaLaRotta/watermelon-http-client@v1
+        with:
+          url: 'http://louappwqs4503/Loadtest/rest/authentication-point/AuthenticateClient'
+          method: post
+          # Should be stored in Secrets and passed as variable name
+          data: '{"ClientIdKey": "I_KEY_fdbabaa8-e070-4f0d-9a6e-6529e021a03d","ClientSecretKey": "S_KEY_9afe3958-c004-4bbd-b359-3b70d967804c"}'
+      - name: Print the response status
+        run: echo ${{ steps.query.outputs.status }}
+        shell: bash
+      - name: Print the response headers
+        run: echo ${{ steps.query.outputs.headers }}
+        shell: bash
+      - name: Print the response payload
+        run: echo ${{ steps.query.outputs.response }}
+        shell: bash
+
+        
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
