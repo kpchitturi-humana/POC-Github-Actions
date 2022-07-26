@@ -28,7 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Start Secrets testing
+        run: echo ClientID ${{ secrets.CLIENT_ID }}
       
       # Authenticate and Get Cookie
       - name: LRE Authenticate
