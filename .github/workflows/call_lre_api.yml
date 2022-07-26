@@ -28,17 +28,18 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Start
+        run: echo Start Secrets testing
       
       # Authenticate and Get Cookie
       - name: LRE Authenticate
         id: query
         uses: CamiloGarciaLaRotta/watermelon-http-client@v1
         with:
+        # replace url with working link from devops
           url: 'http://louappwqs4503/Loadtest/rest/authentication-point/AuthenticateClient'
           method: post
           # Should be stored in Secrets and passed as variable name
-          data: '{"ClientIdKey": "I_KEY_fdbabaa8-e070-4f0d-9a6e-6529e021a03d","ClientSecretKey": "S_KEY_9afe3958-c004-4bbd-b359-3b70d967804c"}'
+          data: '{"ClientIdKey":"${{ secrets.CLIENT_ID }}","ClientSecretKey":"${{ secrets.CLIENT_SECRET }}"}'
       - name: Print the response status
         run: echo ${{ steps.query.outputs.status }}
         shell: bash
